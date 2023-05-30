@@ -627,14 +627,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    627
+                    573
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -662,17 +662,34 @@
 <li>后缀表达式: 运算符在两个操作符后面</li>
 <li>前缀表达式: 运算符在两个操作符前面</li>
 </ul>
-<h2 id="2-中缀表达式转后缀表达式的计算方法"><a href="#2-中缀表达式转后缀表达式的计算方法" class="headerlink" title="2.中缀表达式转后缀表达式的计算方法"></a>2.中缀表达式转后缀表达式的计算方法</h2><h3 id="中缀转后缀的手算方法："><a href="#中缀转后缀的手算方法：" class="headerlink" title="中缀转后缀的手算方法："></a>中缀转后缀的手算方法：</h3><p>&amp;ensp;&amp;ensp;① 确定中缀表达式中各个运算符的运算顺序<br>&amp;ensp;&amp;ensp;② 选择下一个运算符，按照「左操作数 右操作数 运算符」的方式组合成一个新的操作数<br>&amp;ensp;&amp;ensp;③ 如果还有运算符没被处理，就继续 ②    </p>
+<h2 id="2-中缀表达式转后缀表达式的计算方法"><a href="#2-中缀表达式转后缀表达式的计算方法" class="headerlink" title="2.中缀表达式转后缀表达式的计算方法"></a>2.中缀表达式转后缀表达式的计算方法</h2><h3 id="2-1-中缀转后缀的手算方法："><a href="#2-1-中缀转后缀的手算方法：" class="headerlink" title="2.1 中缀转后缀的手算方法："></a>2.1 中缀转后缀的手算方法：</h3><pre><code>    ① 确定中缀表达式中各个运算符的运算顺序    
+    ② 选择下一个运算符，按照「左操作数 右操作数 运算符」的方式组合成一个新的操作数   
+    ③ 如果还有运算符没被处理，就继续 ②    
+</code></pre>
 <img src="/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/1.png" class title="实例">  
 
 
-<h3 id="tips-只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性"><a href="#tips-只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性" class="headerlink" title=" tips:只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性"></a><center> tips:只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性</center></h3><h2 id="3-后缀表达式的计算-手算"><a href="#3-后缀表达式的计算-手算" class="headerlink" title="3. 后缀表达式的计算(手算)"></a>3. 后缀表达式的计算(手算)</h2><h3 id="3-1-方法"><a href="#3-1-方法" class="headerlink" title="3.1 方法"></a>3.1 方法</h3><p>&amp;ensp;&amp;ensp;后缀表达式的手算方法：<br>从左往右扫描，每遇到一个运算符，就让运算符前面最近的两个操作数执行对应运算，<br>合体为一个操作数</p>
+<h3 id="tips-只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性"><a href="#tips-只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性" class="headerlink" title=" tips:只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性"></a><center> tips:只要左边的运算符能够先运算，就先算左边的，保证运算结果的一致性</center></h3><h2 id="3-后缀表达式的计算-手算"><a href="#3-后缀表达式的计算-手算" class="headerlink" title="3. 后缀表达式的计算(手算)"></a>3. 后缀表达式的计算(手算)</h2><h3 id="3-1-方法"><a href="#3-1-方法" class="headerlink" title="3.1 方法"></a>3.1 方法</h3><pre><code>后缀表达式的手算方法：
+从左往右扫描，每遇到一个运算符，就让运算符前面最近的两个操作数执行对应运算，
+合体为一个操作数
+</code></pre>
 <h3 id="3-2-实例"><a href="#3-2-实例" class="headerlink" title="3.2 实例"></a>3.2 实例</h3><img src="/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/2.png" class title="实例">
-<h2 id="4-后缀表达式的计算-机算"><a href="#4-后缀表达式的计算-机算" class="headerlink" title="4. 后缀表达式的计算(机算)"></a>4. 后缀表达式的计算(机算)</h2><h3 id="4-1-方法"><a href="#4-1-方法" class="headerlink" title="4.1 方法"></a>4.1 方法</h3><p>&amp;ensp;&amp;ensp;用栈实现后缀表达式的计算：<br>&amp;ensp;&amp;ensp;①从左往右扫描下一个元素，直到处理完所有元素<br>&amp;ensp;&amp;ensp;②若扫描到操作数则压入栈，并回到①；否则执行③<br>&amp;ensp;&amp;ensp;③若扫描到运算符，则弹出两个栈顶元素，执行相应运算，运算结果压回栈顶，回到①</p>
+<h2 id="4-后缀表达式的计算-机算"><a href="#4-后缀表达式的计算-机算" class="headerlink" title="4. 后缀表达式的计算(机算)"></a>4. 后缀表达式的计算(机算)</h2><h3 id="4-1-方法"><a href="#4-1-方法" class="headerlink" title="4.1 方法"></a>4.1 方法</h3><pre><code>用栈实现后缀表达式的计算：  
+    ①从左往右扫描下一个元素，直到处理完所有元素  
+    ②若扫描到操作数则压入栈，并回到①；否则执行③  
+    ③若扫描到运算符，则弹出两个栈顶元素，执行相应运算，运算结果压回栈顶，回到①
+</code></pre>
 <h3 id="4-2-示例"><a href="#4-2-示例" class="headerlink" title="4.2 示例"></a>4.2 示例</h3><img src="/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/3.png" class title="机算">
-<h2 id="5-中缀表达式转前缀表达式"><a href="#5-中缀表达式转前缀表达式" class="headerlink" title="5.中缀表达式转前缀表达式"></a>5.中缀表达式转前缀表达式</h2><h3 id="5-1-中缀转前缀的手算方法："><a href="#5-1-中缀转前缀的手算方法：" class="headerlink" title="5.1 中缀转前缀的手算方法："></a>5.1 中缀转前缀的手算方法：</h3><p>&amp;ensp;&amp;ensp;① 确定中缀表达式中各个运算符的运算顺序<br>&amp;ensp;&amp;ensp;② 选择下一个运算符，按照「运算符 左操作数 右操作数」的方式组合成一个新的操作数<br>&amp;ensp;&amp;ensp;③ 如果还有运算符没被处理，就继续 ②</p>
+<h2 id="5-中缀表达式转前缀表达式"><a href="#5-中缀表达式转前缀表达式" class="headerlink" title="5.中缀表达式转前缀表达式"></a>5.中缀表达式转前缀表达式</h2><h3 id="5-1-中缀转前缀的手算方法："><a href="#5-1-中缀转前缀的手算方法：" class="headerlink" title="5.1 中缀转前缀的手算方法："></a>5.1 中缀转前缀的手算方法：</h3><pre><code>① 确定中缀表达式中各个运算符的运算顺序  
+② 选择下一个运算符，按照「运算符 左操作数 右操作数」的方式组合成一个新的操作数  
+③ 如果还有运算符没被处理，就继续 ②
+</code></pre>
 <h3 id="5-2示例"><a href="#5-2示例" class="headerlink" title="5.2示例"></a>5.2示例</h3><img src="/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/4.png" class title="示例">
-<h3 id="tips-只要右边的运算符能先计算，就优先算右边的"><a href="#tips-只要右边的运算符能先计算，就优先算右边的" class="headerlink" title="tips: 只要右边的运算符能先计算，就优先算右边的"></a><center>tips: 只要右边的运算符能先计算，就优先算右边的</center></h3><h2 id="6-前缀表达式的计算"><a href="#6-前缀表达式的计算" class="headerlink" title="6. 前缀表达式的计算"></a>6. 前缀表达式的计算</h2><h3 id="6-1-方法"><a href="#6-1-方法" class="headerlink" title="6.1 方法"></a>6.1 方法</h3><p>用栈实现前缀表达式的计算：<br>&amp;ensp;&amp;ensp;①从右往左扫描下一个元素，直到处理完所有元素<br>&amp;ensp;&amp;ensp;②若扫描到操作数则压入栈，并回到①；否则执行③<br>&amp;ensp;&amp;ensp;③若扫描到运算符，则弹出两个栈顶元素，执行相应运算，运算结果压回栈顶，回到①</p>
+<h3 id="tips-只要右边的运算符能先计算，就优先算右边的"><a href="#tips-只要右边的运算符能先计算，就优先算右边的" class="headerlink" title="tips: 只要右边的运算符能先计算，就优先算右边的"></a><center>tips: 只要右边的运算符能先计算，就优先算右边的</center></h3><h2 id="6-前缀表达式的计算"><a href="#6-前缀表达式的计算" class="headerlink" title="6. 前缀表达式的计算"></a>6. 前缀表达式的计算</h2><h3 id="6-1-方法"><a href="#6-1-方法" class="headerlink" title="6.1 方法"></a>6.1 方法</h3><pre><code>用栈实现前缀表达式的计算：  
+    ①从右往左扫描下一个元素，直到处理完所有元素  
+    ②若扫描到操作数则压入栈，并回到①；否则执行③  
+    ③若扫描到运算符，则弹出两个栈顶元素，执行相应运算，运算结果压回栈顶，回到①
+</code></pre>
 <h3 id="6-2-示例"><a href="#6-2-示例" class="headerlink" title="6.2 示例"></a>6.2 示例</h3><img src="/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/5.png" class title="示例">
 <h2 id="7-知识点回顾"><a href="#7-知识点回顾" class="headerlink" title="7. 知识点回顾"></a>7. 知识点回顾</h2><img src="/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/6.png" class title="知识点">
 
