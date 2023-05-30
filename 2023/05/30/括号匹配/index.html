@@ -627,14 +627,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    239
+                    412
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -663,7 +663,58 @@
 <li>遇到左括号即入栈，遇到右括号就“消耗”一个左括号</li>
 </ul>
 <h2 id="流程图表示"><a href="#流程图表示" class="headerlink" title="流程图表示"></a>流程图表示</h2><img src="/2023/05/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1.png" class title="流程图">
-<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;&#x2F;括号匹配 参数为字符数组，栈，数组长度
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;&#x2F;初始化栈
+bool InitStack(Stack&amp; S)
+&#123;
+	S.top &#x3D; -1;
+	return true;
+&#125;
+&#x2F;&#x2F;判断栈是否为空
+bool StackEmpty(Stack S)
+&#123;
+	if (S.top &#x3D;&#x3D; -1)
+		return true;
+	else
+		return false;
+&#125;
+&#x2F;&#x2F;新元素入栈
+bool Push(Stack&amp; S, char x)
+&#123;
+	if (S.top &#x3D;&#x3D; MaxSize - 1)
+		return false;
+	S.data[S.top + 1] &#x3D; x;
+	S.top++;
+	return true;
+&#125;
+&#x2F;&#x2F;出栈操作
+bool Pop(Stack&amp; S, char &amp;x)
+&#123;
+	if (StackEmpty(S))
+		return false;
+	else
+	&#123;
+		S.data[S.top] &#x3D; x;
+		S.top--;
+		return true;
+	&#125;
+&#125;
+&#x2F;&#x2F;打印栈
+void PrintStack(Stack S)
+&#123;
+	if (S.top &#x3D;&#x3D; -1)
+		printf(&quot;空\n&quot;);
+	else
+	&#123;
+		printf(&quot;栈：&quot;);
+		for(int i &#x3D; 0; i &lt; S.top+1; i++)
+		&#123;
+			printf(&quot;%c-&gt;&quot;, S.data[i]);
+		&#125;
+		printf(&quot;end&quot;);
+	&#125;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="核心操作"><a href="#核心操作" class="headerlink" title="核心操作"></a>核心操作</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;&#x2F;括号匹配 参数为字符数组，栈，数组长度
 bool braceCheck(char str[],Stack &amp;S,int length)
 &#123;
 	for (int i &#x3D; 0; i &lt; length; i++) 
@@ -1587,7 +1638,7 @@ bool braceCheck(char str[],Stack &amp;S,int length)
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">633</span>&nbsp;字
+                class="white-color">806</span>&nbsp;字
             
             
             
