@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="括号匹配, 考研 复习 java web 计算机">
+    <meta name="keywords" content="表达式求值, 考研 复习 java web 计算机">
     <meta name="description" content="考研复习及相关javaweb知识记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -20,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>括号匹配 | magic</title>
+    <title>表达式求值 | magic</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -463,12 +463,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">括号匹配</h1>
+                    <h1 class="description center-align post-title">表达式求值</h1>
                 </div>
             </div>
         </div>
@@ -582,29 +582,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%A0%88/">
-                                <span class="chip bg-color">栈</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">
-                                <span class="chip bg-color">括号匹配</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                数据结构
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -627,14 +610,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    412
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -657,91 +640,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="栈的应用–括号匹配"><a href="#栈的应用–括号匹配" class="headerlink" title=" 栈的应用–括号匹配"></a><center> 栈的应用–括号匹配</center></h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><ul>
-<li>最后出现的左括号最先被匹配(LIFO)</li>
-<li>每出现一个右括号，就有一个左括号被消耗</li>
-<li>遇到左括号即入栈，遇到右括号就“消耗”一个左括号</li>
-</ul>
-<h2 id="流程图表示"><a href="#流程图表示" class="headerlink" title="流程图表示"></a>流程图表示</h2><img src="/2023/05/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1.png" class title="流程图">
-<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;&#x2F;初始化栈
-bool InitStack(Stack&amp; S)
-&#123;
-	S.top &#x3D; -1;
-	return true;
-&#125;
-&#x2F;&#x2F;判断栈是否为空
-bool StackEmpty(Stack S)
-&#123;
-	if (S.top &#x3D;&#x3D; -1)
-		return true;
-	else
-		return false;
-&#125;
-&#x2F;&#x2F;新元素入栈
-bool Push(Stack&amp; S, char x)
-&#123;
-	if (S.top &#x3D;&#x3D; MaxSize - 1)
-		return false;
-	S.data[S.top + 1] &#x3D; x;
-	S.top++;
-	return true;
-&#125;
-&#x2F;&#x2F;出栈操作
-bool Pop(Stack&amp; S, char &amp;x)
-&#123;
-	if (StackEmpty(S))
-		return false;
-	else
-	&#123;
-		S.data[S.top] &#x3D; x;
-		S.top--;
-		return true;
-	&#125;
-&#125;
-&#x2F;&#x2F;打印栈
-void PrintStack(Stack S)
-&#123;
-	if (S.top &#x3D;&#x3D; -1)
-		printf(&quot;空\n&quot;);
-	else
-	&#123;
-		printf(&quot;栈：&quot;);
-		for(int i &#x3D; 0; i &lt; S.top+1; i++)
-		&#123;
-			printf(&quot;%c-&gt;&quot;, S.data[i]);
-		&#125;
-		printf(&quot;end&quot;);
-	&#125;
-
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="核心操作"><a href="#核心操作" class="headerlink" title="核心操作"></a>核心操作</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;&#x2F;括号匹配 参数为字符数组，栈，数组长度
-bool braceCheck(char str[],Stack &amp;S,int length)
-&#123;
-	for (int i &#x3D; 0; i &lt; length; i++) 
-	&#123;
-		&#x2F;&#x2F;扫描到左括号，入栈
-		if (str[i] &#x3D;&#x3D; &#39;(&#39; || str[i] &#x3D;&#x3D; &#39;&#123;&#39; || str[i] &#x3D;&#x3D; &#39;[&#39;)
-		&#123;
-			Push(S, str[i]);
-		&#125;
-		else &#123;
-			if (StackEmpty(S)) &#x2F;&#x2F;扫描到右括号，但栈已经空了
-				return false;
-			else &#123;
-				char topElem;
-				Pop(S, topElem);
-				if (str[i] &#x3D;&#x3D; &#39;(&#39; &amp;&amp; topElem !&#x3D; &#39;)&#39;)
-					return false;
-				if (str[i] &#x3D;&#x3D; &#39;[&#39; &amp;&amp; topElem !&#x3D; &#39;]&#39;)
-					return false;
-				if (str[i] &#x3D;&#x3D; &#39;&#123;&#39; &amp;&amp; topElem !&#x3D; &#39;&#125;&#39;)
-					return false;
-			&#125;
-		&#125;
-	&#125;
-	return StackEmpty(S);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="知识点回顾"><a href="#知识点回顾" class="headerlink" title="知识点回顾"></a>知识点回顾</h2><img src="/2023/05/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/2.png" class title="知识点回顾">
+                
                 
             </div>
             <hr/>
@@ -767,7 +666,7 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://MagicalShadowSSS.github.io/2023/05/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">https://MagicalShadowSSS.github.io/2023/05/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</a>
+                    <a href="https://MagicalShadowSSS.github.io/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/">https://MagicalShadowSSS.github.io/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -804,15 +703,7 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%A0%88/">
-                                    <span class="chip bg-color">栈</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">
-                                    <span class="chip bg-color">括号匹配</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1300,9 +1191,10 @@ bool braceCheck(char str[],Stack &amp;S,int length)
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/05/30/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/">
                     <div class="card-image">
@@ -1320,9 +1212,9 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1331,6 +1223,7 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1341,13 +1234,13 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/05/28/%E9%98%9F%E5%88%97/">
+                <a href="/2023/05/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="队列">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="括号匹配">
                         
-                        <span class="card-title">队列</span>
+                        <span class="card-title">括号匹配</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1358,7 +1251,7 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-30
                             </span>
                         <span class="publish-author">
                             
@@ -1375,12 +1268,12 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%98%9F%E5%88%97/">
-                        <span class="chip bg-color">队列</span>
+                    <a href="/tags/%E6%A0%88/">
+                        <span class="chip bg-color">栈</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">
+                        <span class="chip bg-color">括号匹配</span>
                     </a>
                     
                 </div>
