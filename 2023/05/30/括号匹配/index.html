@@ -627,14 +627,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    371
+                    390
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -649,6 +649,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -660,7 +663,57 @@
 <li>遇到左括号即入栈，遇到右括号就“消耗”一个左括号</li>
 </ul>
 <h2 id="流程图表示"><a href="#流程图表示" class="headerlink" title="流程图表示"></a>流程图表示</h2><img src="/2023/05/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/1.png" class title="流程图">
-<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化栈</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">InitStack</span><span class="params">(Stack&amp; S)</span></span><br><span class="line">&#123;</span><br><span class="line">	S.top = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断栈是否为空</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">StackEmpty</span><span class="params">(Stack S)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (S.top == <span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//新元素入栈</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">Push</span><span class="params">(Stack&amp; S, <span class="type">char</span> x)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (S.top == MaxSize - <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	S.data[S.top + <span class="number">1</span>] = x;</span><br><span class="line">	S.top++;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出栈操作</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">Pop</span><span class="params">(Stack&amp; S, <span class="type">char</span> &amp;x)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (StackEmpty(S))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		S.data[S.top] = x;</span><br><span class="line">		S.top--;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印栈</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PrintStack</span><span class="params">(Stack S)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (S.top == <span class="number">-1</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;空\n&quot;</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;栈：&quot;</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; S.top+<span class="number">1</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;&quot;</span>, S.data[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;end&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;&#x2F;初始化栈
+bool InitStack(Stack&amp; S)
+&#123;
+	S.top &#x3D; -1;
+	return true;
+&#125;
+&#x2F;&#x2F;判断栈是否为空
+bool StackEmpty(Stack S)
+&#123;
+	if (S.top &#x3D;&#x3D; -1)
+		return true;
+	else
+		return false;
+&#125;
+&#x2F;&#x2F;新元素入栈
+bool Push(Stack&amp; S, char x)
+&#123;
+	if (S.top &#x3D;&#x3D; MaxSize - 1)
+		return false;
+	S.data[S.top + 1] &#x3D; x;
+	S.top++;
+	return true;
+&#125;
+&#x2F;&#x2F;出栈操作
+bool Pop(Stack&amp; S, char &amp;x)
+&#123;
+	if (StackEmpty(S))
+		return false;
+	else
+	&#123;
+		S.data[S.top] &#x3D; x;
+		S.top--;
+		return true;
+	&#125;
+&#125;
+&#x2F;&#x2F;打印栈
+void PrintStack(Stack S)
+&#123;
+	if (S.top &#x3D;&#x3D; -1)
+		printf(&quot;空\n&quot;);
+	else
+	&#123;
+		printf(&quot;栈：&quot;);
+		for(int i &#x3D; 0; i &lt; S.top+1; i++)
+		&#123;
+			printf(&quot;%c-&gt;&quot;, S.data[i]);
+		&#125;
+		printf(&quot;end&quot;);
+	&#125;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="核心操作"><a href="#核心操作" class="headerlink" title="核心操作"></a>核心操作</h3><pre><code class="C">//括号匹配 参数为字符数组，栈，数组长度
 bool braceCheck(char str[],Stack &amp;S,int length)
 &#123;
@@ -1307,13 +1360,13 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/05/30/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8-%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">
+                <a href="/2023/05/28/%E9%98%9F%E5%88%97/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="栈的应用--括号匹配">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="队列">
                         
-                        <span class="card-title">栈的应用--括号匹配</span>
+                        <span class="card-title">队列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1324,7 +1377,7 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-28
                             </span>
                         <span class="publish-author">
                             
@@ -1341,12 +1394,12 @@ bool braceCheck(char str[],Stack &amp;S,int length)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A0%88/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/%E9%98%9F%E5%88%97/">
+                        <span class="chip bg-color">队列</span>
                     </a>
                     
-                    <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">
-                        <span class="chip bg-color">括号匹配</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
@@ -1586,7 +1639,7 @@ bool braceCheck(char str[],Stack &amp;S,int length)
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.1k</span>&nbsp;字
+                class="white-color">784</span>&nbsp;字
             
             
             
